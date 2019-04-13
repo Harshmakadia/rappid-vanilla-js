@@ -63,8 +63,60 @@ joint.shapes.qad.AnswerView = joint.dia.ElementView.extend({
   }
 });
 
-joint.dia.Element.define('qad.Question', {
+joint.dia.Element.define('qad.Nested', {
+  attrs: {
+    rect: {
+      fill: '#4b4a67',
+      stroke: 'none',
+      refWidth: '100%',
+      refHeight: '100%',
+      rx: 3,
+      ry: 3
+    },
+    text: {
+      fontSize: 14,
+      refX: .5,
+      refY: .5,
+      yAlignment: 'middle',
+      xAlignment: 'middle',
+      fill: '#f6f6f6',
+      fontFamily: 'Arial, helvetica, sans-serif'
+    }
+  }
+}, {
+  markup: '<rect/><text class="sd"/>',
 
+  initialize: function() {
+
+    joint.dia.Element.prototype.initialize.apply(this, arguments);
+
+    this.attr('text/text', this.get('answer'));
+    this.on('change:answer', function() {
+      this.attr('text/text', this.get('answer'));
+    }, this);
+  }
+});
+
+joint.shapes.qad.NetstedView = joint.dia.ElementView.extend({
+
+  initialize: function() {
+
+    joint.dia.ElementView.prototype.initialize.apply(this, arguments);
+    this.autoresize();
+    this.listenTo(this.model, 'change:answer', this.autoresize, this);
+  },
+
+  autoresize: function() {
+
+    var dim = joint.util.measureText(this.model.get('answer'), {
+      fontSize: this.model.attr('text/fontSize')
+    });
+    this.model.resize(dim.width + 50, dim.height + 50);
+  }
+});
+
+
+joint.dia.Element.define('qad.Question', {
   optionHeight: 30,
   questionHeight: 45,
   paddingBottom: 30,

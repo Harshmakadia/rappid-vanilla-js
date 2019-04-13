@@ -35,12 +35,34 @@ App.config = App.config || {};
     App.config.stencil.shapes.qad = [
         {
             type: 'qad.Question',
+            attrs: {
+                root: {
+                    dataTooltip: 'Options',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+            },
             inPorts: [{ id: 'in', label: 'In' }],
             options: [
                 { id: 'yes', text: 'Option 1' },
                 { id: 'no', text: 'Option 2' }
             ]
         },
+        {
+            type: 'qad.Nested',
+            attrs: {
+                root: {
+                    dataTooltip: 'Options',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+            },
+            inPorts: [{ id: 'in', label: 'In' }],
+            options: [
+                { id: 'yes', text: 'Option 1' },
+                { id: 'no', text: 'Option 2' }
+            ]
+        }
     ];
 
     App.config.stencil.shapes.standard = [
@@ -70,6 +92,33 @@ App.config = App.config || {};
                     fontWeight: 'Normal',
                     fontSize: 12,
                     strokeWidth: 0
+                }
+            }
+        },
+        {
+            type: 'standard.Image',
+            size: { width: 25, height: 25 },
+            attrs: {
+                root: {
+                    dataTooltip: 'End',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+                image: {
+                    xlinkHref: 'assets/Close.svg'
+                },
+                body: {
+                    fill: 'transparent',
+                    stroke: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0'
+                },
+                label: {
+                    text: 'End',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 11,
+                    fill: '#c6c7e2'
                 }
             }
         },

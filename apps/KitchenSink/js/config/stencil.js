@@ -2,7 +2,7 @@
 
 Copyright (c) 2015 client IO
 
- 2019-03-27 
+ 2019-03-27
 
 
 This Source Code Form is subject to the terms of the Rappid Trial License
@@ -33,6 +33,35 @@ App.config = App.config || {};
     App.config.stencil.shapes = {};
 
     App.config.stencil.shapes.qad = [
+        {
+            type: 'devs.Model',
+            position: { x: 50, y: 50 },
+            size: { width: 90, height: 90 },
+            inPorts: ['in1'],
+            outPorts: ['out'],
+            ports: {
+                groups: {
+                    'in': {
+                        attrs: {
+                            '.port-body': {
+                                fill: '#16A085'
+                            }
+                        }
+                    },
+                    'out': {
+                        attrs: {
+                            '.port-body': {
+                                fill: '#E74C3C'
+                            }
+                        }
+                    }
+                }
+            },
+            attrs: {
+                '.label': { text: 'Hello', 'ref-x': .5, 'ref-y': .2 },
+                rect: { fill: '#2ECC71' }
+            }
+        },
         {
             type: 'qad.Question',
             attrs: {
@@ -93,7 +122,7 @@ App.config = App.config || {};
                     fontSize: 12,
                     strokeWidth: 0
                 }
-            }
+            },
         },
         {
             type: 'standard.Image',

@@ -68,7 +68,10 @@ var App = window.App || {};
                 model: graph,
                 defaultLink: new joint.shapes.app.Link,
                 defaultConnectionPoint: joint.shapes.app.Link.connectionPoint,
-                interactive: { linkMove: false }
+                interactive: { linkMove: false },
+                snapLinks: { radius: 75 },
+                // Enable marking available cells & magnets
+                markAvailable: true
             });
 
             paper.on('blank:mousewheel', _.partial(this.onMousewheel, null), this);

@@ -22,7 +22,8 @@ App.config = App.config || {};
 
     App.config.stencil.groups = {
         standard: { index: 1, label: 'Standard shapes' },
-        qad: { index: 2, label: 'Custom Shapes'}
+        qad: { index: 2, label: 'Custom Shapes'},
+        html : { index:3, label: 'HTML shapes'}
         // fsa: { index: 2, label: 'State machine' },
         // pn: { index: 3, label: 'Petri nets' },
         // erd: { index: 4, label: 'Entity-relationship' },
@@ -31,6 +32,16 @@ App.config = App.config || {};
     };
 
     App.config.stencil.shapes = {};
+
+     App.config.stencil.shapes.html = [
+         {
+            type: 'html.Element',
+            position: { x: 80, y: 80 },
+            size: { width: 170, height: 100 },
+            label: 'I am HTML',
+            select: 'one'
+         }
+     ];
 
     App.config.stencil.shapes.qad = [
         {
